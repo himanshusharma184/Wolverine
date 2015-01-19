@@ -1,0 +1,83 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="entityMap">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entry" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="key"/>
+                    <xs:element name="value">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="dataType">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="entry" maxOccurs="unbounded" minOccurs="1">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element type="xs:string" name="key"/>
+                                      <xs:element type="xs:string" name="value"/>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="collectionMap">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="name"/>
+              <xs:element name="value">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dataType">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="entry" maxOccurs="unbounded" minOccurs="1">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element type="xs:string" name="key"/>
+                                <xs:element type="xs:string" name="value"/>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="mappingEntity">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="entity" maxOccurs="unbounded" minOccurs="1">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:byte" name="id"/>
+                    <xs:element type="xs:string" name="name"/>
+                    <xs:element type="xs:string" name="key"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

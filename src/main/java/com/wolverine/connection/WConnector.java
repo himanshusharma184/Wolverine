@@ -44,4 +44,11 @@ public class WConnector implements Connector {
 		return db;
 	}
 
+	public void close(Connection connection) {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

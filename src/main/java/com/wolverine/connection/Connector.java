@@ -8,4 +8,6 @@ public interface Connector {
 	Connection getMySqlConnection(SqlConnector connector);
 
 	DB getMongoDBConnection(String dbName);
+
+	void close(Connection connection);
 }
