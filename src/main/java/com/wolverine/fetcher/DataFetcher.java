@@ -1,38 +1,34 @@
 package com.wolverine.fetcher;
 
-import java.io.Reader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import com.mysql.jdbc.Connection;
+import com.wolverine.jaxb.ListWrapper;
 
 public class DataFetcher {
 
-	Map<String, Map<String, Object>> getData(Connection connection,
-			List<String> entityList) {
-		Map<String, Map<String, Object>> result = new HashMap<String, Map<String, Object>>();
-		for (String type : entityList) {
-			Statement stmt;
-			try {
-				stmt = connection.createStatement();
-				String  sql = "SELECT * FROM " + type;
-				ResultSet results = stmt.executeQuery(sql);
-				while(results.next())
-				{
-					Reader value = results.getNCharacterStream(0);
-					//value.
+	public Map<String, ResultSet> getData(Map<String, ListWrapper> collectionMap,
+			Connection connection) throws SQLException {
+		Map<String, ResultSet> result = new HashMap<String, ResultSet>();
+
+		if (collectionMap != null && !collectionMap.isEmpty()) {
+			for (String table : collectionMap.keySet()) {
+				Statement statement = connection.createStatement();
+				String sql = "SELECT * FROM " + table;
+				ResultSet rs = statement.executeQuery(sql);
+				if (rs != null) {
+					result.put(table, rs);
 				}
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
+			return result;
 		}
 
 		return null;
 
 	}
+	
 }

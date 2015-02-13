@@ -1,13 +1,15 @@
 package com.wolverine.connection;
 
+import java.net.UnknownHostException;
+
 import com.mongodb.DB;
 import com.mysql.jdbc.Connection;
 
 public interface Connector {
 
-	Connection getMySqlConnection(SqlConnector connector);
+	Connection getMySqlConnection();
 
-	DB getMongoDBConnection(String dbName);
+	DB getMongoDBConnection()throws UnknownHostException;
 
 	void close(Connection connection);
 }
